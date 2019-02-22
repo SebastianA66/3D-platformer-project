@@ -7,17 +7,17 @@ public class Dash : MonoBehaviour
     public bool dash;
     public bool dashCool;
     public float dashDuration = 0.005f;
-    public float dashSpeed = 30f;
+    public float dashSpeed = 50f;
     public float dashTimer = 0f;
     public float dashCooldown = 5f;
     public float currentCooldown;
-    PlayerController controller;
+    CharacterMovement controller;
        
     public bool onCoolDown = false;
 
     private void Start()
     {
-        controller = GetComponent<PlayerController>();
+        controller = GetComponent<CharacterMovement>();
 
     }
 
@@ -29,7 +29,8 @@ public class Dash : MonoBehaviour
             Debug.Log("Dash Start");
             // Enable dash
             dash = true;
-                       
+
+            controller.isDashing = dash;
 
             currentCooldown = dashCooldown;
             Debug.Log(currentCooldown.ToString() + " || " + dashCooldown.ToString());
@@ -48,6 +49,9 @@ public class Dash : MonoBehaviour
                 Debug.Log("Dash Working");
                 // dash = false
                 dash = false;
+
+                controller.isDashing = dash;
+
                 // Set speed to normal
                 controller.moveSpeed = controller.startSpeed;
                 // set your timer to 0
