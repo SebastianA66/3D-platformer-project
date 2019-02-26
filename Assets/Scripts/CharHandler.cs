@@ -7,8 +7,6 @@ public class CharHandler : MonoBehaviour
     public bool alive;
 
 
-
-
     private void Start()
     {
 
@@ -16,14 +14,24 @@ public class CharHandler : MonoBehaviour
         alive = true;
     }
 
-
-
-
     public void Dead()
     {
         // Deactivate the player
         gameObject.SetActive(false);
     }
 
+    void Update()
+    {
+        //check if you character fell off the platform
+        if (transform.position.y < -10)
+        {
+            transform.position.y = 5.329594; 
+            transform.position.x = 5.203072; 
+            transform.position.z = -46.88659; 
+        }
+    }
 }
+
+
+
 
