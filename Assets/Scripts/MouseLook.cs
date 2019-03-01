@@ -19,6 +19,9 @@ public class MouseLook : MonoBehaviour
     public float maximumY = 60f;
    
     float rotationY = 0.0f;
+
+    public Transform player;
+
     #endregion
     #region Start
     private void Start()
@@ -39,13 +42,14 @@ public class MouseLook : MonoBehaviour
         if (axis == RotationalAxis.MouseXandY)
         {
           
-            float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+            float rotationX = Input.GetAxis("Mouse X") * sensitivityX;
         
             rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
             
             rotationY = Mathf.Clamp(rotationY, minumumY, maximumY);
-        
-            transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+            transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
+            player.localEulerAngles += new Vector3(0,rotationX, 0);
+            
         }
         #endregion
         #region Mouse X
@@ -70,6 +74,8 @@ public class MouseLook : MonoBehaviour
 
         }
         #endregion
+
+
     }
 }
 

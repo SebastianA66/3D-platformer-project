@@ -15,6 +15,8 @@ public class CharacterMovement : MonoBehaviour
     public bool isDashing;
 
 
+
+
     private void Start()
     {
         controller = this.GetComponent<CharacterController>();
@@ -26,7 +28,6 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        
 
         if (controller.isGrounded || isDashing)
         {
